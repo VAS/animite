@@ -47,17 +47,17 @@ It takes 2 parameters: ```film.seek( frame, step )```.
 - ```step```  = next increment
 
 ```javascript 
-sprite.seek(0, 1);
+film.seek(0, 1);
 // The above will start the animation from
 // frame 0, and go forwards in time by 1 frame
 // at the specified framerate (fps).
 
-sprite.seek(20, -1);
+film.seek(20, -1);
 // The above will start the animation from
 // frame 20, and go backwards in time by 1 frame
 // at the specified framerate (fps).
 
-sprite.seek(36, 0);
+film.seek(36, 0);
 // The above will seek to frame 36 and pause
 ```
 

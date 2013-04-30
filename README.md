@@ -4,7 +4,7 @@ Animite
 ###Mission
 Animite comes from the union of two words: _**anim**ated_ and _spr<b>ite</b>_. Its goal is to provide a __codec-less__ way to deal with video on the web, with __no HTML5__ or __Flash__, without sacrificing _efficiency_, _flexibility_ and _versatility_.
 
-Typical CPU usage is about 60% lower when using Animite compared to a Flash video, and has the advantage of not depending on GPU acceleration. It is especially targeted for, and tested on low-end machines.
+It boasts high precision seeking, low latency feedback and frame-by-frame accuracy. Typical CPU usage is about 60% lower when using Animite compared to a Flash video, and has the advantage of not depending on GPU acceleration. It is especially targeted for, and tested on low-end machines.
 
 **IMPORTANT**: _Audio is **currently** not supported_. However, please know it's our #1 priority and are currently working on it. If you have an idea, or would like to contribute, please __FORK__ :)
 

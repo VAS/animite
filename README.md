@@ -4,7 +4,9 @@ Animite v0.1
 ###Mission
 Animite comes from the union of two words: _**anim**ated_ and _spr<b>ite</b>_. Its goal is to provide a __codec-less__ way to deal with video on the web, with __no HTML5__ or __Flash__, without sacrificing _efficiency_, _flexibility_ and _versatility_.
 
-It boasts high precision seeking, low latency feedback and frame-by-frame accuracy. Typical CPU usage is about 60% lower when using Animite compared to a Flash video, and has the advantage of not depending on GPU acceleration. It is especially targeted for, and tested on low-end machines.
+It boasts fast, high precision seeking, natively variable (even on the fly) playback direction, speed and framerate. Please check out the demo for more information (coming soon). 
+
+Typical CPU usage is about 60% lower when using Animite compared to a Flash video, and has the advantage of not depending on GPU acceleration. It is especially targeted for, and tested on low-end machines.
 
 **IMPORTANT**: _Audio is **currently** not supported_. However, please know it's our #1 priority and are currently working on it. If you have an idea, or would like to contribute, please __FORK__ :)
 
@@ -66,6 +68,7 @@ You can however find an example HTML page where a player, some controls, and sub
 ##Features
 
 ###Benefits over traditional video
+- _Fast_ and powerful playback/seeking control
 - Pure Javascript, CSS & HTML
 - Completely stylable with CSS (border-radius, inset box-shadow, opacity, etc)
 - Codec-free

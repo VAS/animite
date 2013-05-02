@@ -123,15 +123,15 @@ If we had a seek bar for example, we could visually add an element to show where
 ###Preloading
 Animite offers accurate preloading states
 ```javascript 
-film.preload.reels; // returns an array of _currently_ preloaded reels
-film.preload.frames; // returns the number of loaded frames (number)
-film.preload.percent; // returns current preloaded percent from 0 to 100
+film.preloaded.reels; // returns an array of _currently_ preloaded reels
+film.preloaded.frames; // returns the number of loaded frames (number)
+film.preloaded.percent; // returns current preloaded percent from 0 to 100
 ```
 
 Example:
 ```javascript
 // Please don't use this...but you get the idea
-while( film.preload.percent < 100 ) {
+while( film.preloaded.percent < 100 ) {
 	// manage your preloading view states here
 }
 ```
@@ -215,13 +215,13 @@ film.play(); // easy as that.
 
 
 ###Preloading
- ``` film.preload ``` 
+ ``` film.preloaded ``` 
 
- ``` film.preload.reels ``` 
+ ``` film.preloaded.reels ``` 
 
- ``` film.preload.frames ``` 
+ ``` film.preloaded.frames ``` 
 
- ``` film.preload.percent ``` 
+ ``` film.preloaded.percent ``` 
 
 
 ###Keyframes

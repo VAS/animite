@@ -201,26 +201,29 @@ A typical JSON:
 var data = {
 	width: 640,   // px
 	height: 360,  // px
-	fps : 23.976, // frames-per-second, (23.976 is the standard for US film)
+	fps : 23.976, // 23.976 is the standard for US film
 	reels : [     // array of reel objects
 		{ 
-			"frames": 30, 		// number of frames in this reel
-			"width":2560, 		// pixel width of this reel
-			"path":"reel.1.jpg" // path to reel
+			frames: 30, 	    // number of frames in this reel
+			width:2560, 	    // pixel width of this reel
+			path:"reel.1.jpg"   // path to reel
 		},
 		{ 
-			"frames": 30, 		// number of frames in this reel
-			"width": 2560, 		// pixel width of this reel
-			"path":"reel.2.jpg" // path to reel
+			frames: 30, 	    // number of frames in this reel
+			width: 2560, 	    // pixel width of this reel
+			path:"reel.2.jpg"   // path to reel
 		},
 		{ 
-			"frames": 30, 		// number of frames in this reel
-			"width":2560, 		// pixel width of this reel
-			"path":"reel.3.jpg" // path to reel
+			frames: 30, 	    // number of frames in this reel
+			width:2560, 	    // pixel width of this reel
+			path:"reel.3.jpg"   // path to reel
 		}	
     ]
 };
+```
 
+Once you have the JSON, all you need to do is:
+```javascript
 // select film container
 var div = document.getElementById('film-container');
 

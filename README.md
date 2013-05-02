@@ -50,12 +50,12 @@ It takes 2 parameters: ```film.seek(frame, step)```.
 ```javascript 
 film.seek(0, 1);
 // The above will start the animation from
-// frame 0, and go forwards in time by 1 frame
+// frame 0, and progress by 1 frame
 // at the specified framerate (fps).
 
 film.seek(20, -1);
 // The above will start the animation from
-// frame 20, and go backwards in time by 1 frame
+// frame 20, and go in reverse by 1 frame
 // at the specified framerate (fps).
 
 film.seek(36, 0);
@@ -95,7 +95,7 @@ It includes:
 - Multiple keyframe __channels__ support
 - Makes it simple to link to any external script
 - __Subtitle support__
-  * included SRT parser/converter, but you can use your own!
+  * included .SRT (SubRip) parser/converter (check utils), but you can use your own!
 
 ####Adding KeyFrames
 Keyframes can easily be added using: ```film.addKeyFrame(frame, track, comment, callback)```

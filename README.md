@@ -1,4 +1,4 @@
-Animite
+Animite v0.1
 =======
 
 ###Mission
@@ -159,7 +159,41 @@ film.posToFrame( 50 );  // e.g. 100 (seconds) [if total frame count is 200]
 
 ##How to convert a video for Animite
 
-Conversion only happens once on the backend, can easily be custom-implemented and made automatic. Once reels are generated, Animite will need a simple JSON to understand how to manage them.
+Animite needs **reels** to work. A reel is nothing more than one large image containing all of the single frames of a video clip. You can split long clips into several reels. It is up to you to find the optimal reel/frame ratio based on your bandwidth requirements / memory consumption.
+
+A part from the fancy name, reels are nothing more than a JPEG or PNG image. For best compression, remember to use
+ - ```JPEG``` for *photo*-like images
+ - ```PNG``` for *vector*-like images, or if *transparency is **required** *.
+ - Animite supports frames on multiple lines within a reel, so try to make the image as square as possible (avoid excessively wide or tall reels.) This will reduce overall memory consumption.
+
+###Any-2-Reel, the Reel generator.
+We have implemented our own Reel generator (a simple PHP script), and it should work on any system with a command-line, PHP, [FFMPEG](http://www.ffmpeg.org) and ImageMagick [Montage](http://www.imagemagick.org/script/montage.php).
+
+Please note that **Animite also requires a JSON file** to understand your reel structure. While our ```any2reel``` script automatically generates one, should you implement your own reel generator, you will need to either write the JSON manually or automatically.
+
+The generalized JSON format for Animite is the following: 
+
+```javascript
+
+{
+	width : VIDEO_WIDTH,   // number (int)
+	height: VIDEO_HEIGHT,  // number (int)
+	fps : VIDEO_FRAMERATE, // number (float) frames-per-second
+	reels : [              // array of reel objects
+		{
+			frames : NUMBER_OF_FRAMES_IN_REEL, // number (int)
+			width : PIXEL_WIDTH_OF_REEL,       // number (int)
+			path : PATH_TO_REEL                // string
+		}
+	]
+}
+
+```
+
+You will notice that each reel requires ```frames```, ```width```, and ```path```.
+- ```frames``` is the number of frames contained in that particular reel.
+- ```width``` is width of the reel (in pixels), so that Animite knows when to go to the next line of frames
+- ```path``` is a simple path to the image. If you have ```reel.jpg``` in a ```reels/``` directory, all you need to do is write: ```"reels/reel.jpg"``` for example. Think of it as a ```src``` tag (we might consider renaming it).
 
 A typical JSON: 
 

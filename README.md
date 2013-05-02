@@ -30,13 +30,12 @@ var film = new Animite( div, data );
 
 ###Playback
 ```javascript
-film.play( callback );
-film.stop( callback );
-film.pause( callback );
+film.play();  // can receive a callback as parameter
+film.stop();  // can receive a callback as parameter
+film.pause(); // can receive a callback as parameter
 
 film.now; // will return the current position of the film (updated every frame)
 film.now = 20; // will seek the video to 20% of the total play-time
-
 ```
 
 ###Seek

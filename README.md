@@ -98,6 +98,12 @@ It includes:
 ####Adding KeyFrames
 Keyframes can easily be added using: ```film.addKeyFrame( frame, track, comment, callback )```
 
+```addKeyFrame``` takes 4 parameters:
+- ```frame``` : frame number (int)
+- ```track``` : keyframe channel (organize your keyframes in categories)
+- ```comment``` : general text or comment to store relative to this keyframe
+- ```callback``` : add a function to be called __when keyframe is played__.
+
 Example:
 
 ```Javascript
@@ -113,8 +119,8 @@ film.addKeyFrame( 124, 'todo', 'Needs a transition', function(){
 
 We could also define a custom ```addKeyFrame``` function on our page:
 ```javascript
-function addKeyFrame(frame, content, callback) {
-    film.addKeyFrame(frame, content, callback);
+function addKeyFrame(frame, track, content, callback) {
+    film.addKeyFrame(frame, track, content, callback);
     // affect the view here
 }
 ```

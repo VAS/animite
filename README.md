@@ -163,7 +163,7 @@ Animite needs **reels** to work. A reel is nothing more than one large image con
 
 A part from the fancy name, reels are nothing more than a JPEG or PNG image. For best compression, remember to use
  - ```JPEG``` for *photo*-like images
- - ```PNG``` for *vector*-like images, or if *transparency is **required** *.
+ - ```PNG``` for *vector*-like images, or if _transparency is **required**_.
  - Animite supports frames on multiple lines within a reel, so try to make the image as square as possible (avoid excessively wide or tall reels.) This will reduce overall memory consumption.
 
 ###Any-2-Reel, the Reel generator.

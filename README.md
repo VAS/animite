@@ -25,7 +25,7 @@ Animite is perfect if you want to include videos/clips/sprites on a page, you do
 
 ###Initialization
 ```javascript
-var film = new Animite( div, data );
+var film = new Animite(div, data );
 ```
 - ```div``` is the HTML element that Animite will use to display ```film```. The only requirement is that the element must be able to contain a background.
 - ```data``` is a JSON containing general information. Please read the __How to convert a video for Animite__ section to understand what is required.
@@ -43,7 +43,7 @@ film.now = 20; // will seek the video to 20% of the total play-time
 ###Seek
 The __seek__ function is the underlying core of Animite. ```film.play```, ```film.pause```, ```film.stop``` and ```film.now``` are all built on top of ```film.seek```.
 
-It takes 2 parameters: ```film.seek( frame, step )```.
+It takes 2 parameters: ```film.seek(frame, step )```.
 - ```frame``` = which frame to show
 - ```step```  = next increment
 
@@ -98,7 +98,7 @@ It includes:
   * included SRT parser/converter, but you can use your own!
 
 ####Adding KeyFrames
-Keyframes can easily be added using: ```film.addKeyFrame( frame, track, comment, callback )```
+Keyframes can easily be added using: ```film.addKeyFrame(frame, track, comment, callback )```
 
 ```addKeyFrame``` takes 4 parameters:
 - ```frame``` : frame number (int)
@@ -110,11 +110,11 @@ Example:
 
 ```Javascript
 // adds a keyframe at frame 85, and saves the comment.
-film.addKeyFrame( 85, 'todo', 'Remember to edit this out'); 
+film.addKeyFrame(85, 'todo', 'Remember to edit this out'); 
 
 
 // you can also add a callback
-film.addKeyFrame( 124, 'todo', 'Needs a transition', function(){
+film.addKeyFrame(124, 'todo', 'Needs a transition', function(){
 	// affect my view, send triggers, etc here
 });
 ```
@@ -139,7 +139,7 @@ film.preloaded.percent; // returns current preloaded percent from 0 to 100
 Example:
 ```javascript
 // Please don't use this...but you get the idea
-while( film.preloaded.percent < 100 ) {
+while(film.preloaded.percent < 100) {
 	// manage your preloading view states here
 }
 ```
@@ -148,19 +148,19 @@ while( film.preloaded.percent < 100 ) {
 
 ####Time < > Frame
 ```javascript
-film.timeToFrame( 100 ); // e.g. 2400 at 24 fps
+film.timeToFrame(100 ); // e.g. 2400 at 24 fps
 // returns the frame # where the 100th second of playback occurs
 
-film.frameToTime( 2400 );  // e.g. 100 (seconds) at 24 fps
+film.frameToTime(2400 );  // e.g. 100 (seconds) at 24 fps
 // returns amount of elapsed seconds from frame 0 and 24th frame (at current frame-rate)
 ```
 
 ####Frame < > Position
 ```javascript
-film.frameToPos( 100 ); // e.g. 50 (%) [if total frame count is 200]
+film.frameToPos(100 ); // e.g. 50 (%) [if total frame count is 200]
 // returns the current position
 
-film.posToFrame( 50 );  // e.g. 100 (seconds) [if total frame count is 200]
+film.posToFrame(50 );  // e.g. 100 (seconds) [if total frame count is 200]
 // returns the frame closest to exactly 50% of playback
 ```
 
@@ -236,7 +236,7 @@ Once you have the JSON, all you need to do is:
 var div = document.getElementById('film-container');
 
 // initialize film
-var film = new Animite( div, data );
+var film = new Animite(div, data );
 
 film.play(); // easy as that.
 ```
@@ -244,13 +244,13 @@ film.play(); // easy as that.
 ##Docs
 
 ###Playback
- ``` film.play( callback ) ``` 
+ ``` film.play(callback) ``` 
 
- ``` film.pause( callback ) ``` 
+ ``` film.pause(callback) ``` 
 
- ``` film.stop( callback ) ``` 
+ ``` film.stop(callback) ``` 
 
- ``` film.seek( frame, step ) ``` 
+ ``` film.seek(frame, step) ``` 
 
  ``` film.now ``` 
 
@@ -270,14 +270,14 @@ film.play(); // easy as that.
 
 
 ###Keyframes
- ``` film.addKeyFrame( frame, track, comment, callback ) ``` 
+ ``` film.addKeyFrame(frame, track, comment, callback) ``` 
 
 
 ###Utility functions
- ``` film.timeToFrame( seconds ) ``` 
+ ``` film.timeToFrame(seconds) ``` 
 
- ``` film.frameToTime( frame ) ``` 
+ ``` film.frameToTime(frame) ``` 
 
- ``` film.frameToPos( frame ) ``` 
+ ``` film.frameToPos(frame) ``` 
 
- ``` film.posToFrame( position ) ``` 
+ ``` film.posToFrame(position) ``` 

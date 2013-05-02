@@ -169,7 +169,7 @@ Animite needs **reels** to work. A reel is nothing more than one large image con
 
 A part from the fancy name, reels are nothing more than a JPEG or PNG image. For best compression, remember to use
  - ```JPEG``` for *photo*-like images
- - ```PNG``` for *vector*-like images, or if *transparency is **required** *.
+ - ```PNG``` for *vector*-like images, or if _transparency is **required**_.
  - Animite supports frames on multiple lines within a reel, so try to make the image as square as possible (avoid excessively wide or tall reels.) This will reduce overall memory consumption.
 
 ###Any-2-Reel, the Reel generator.
@@ -207,26 +207,29 @@ A typical JSON:
 var data = {
 	width: 640,   // px
 	height: 360,  // px
-	fps : 23.976, // frames-per-second, (23.976 is the standard for US film)
+	fps : 23.976, // 23.976 is the standard for US film
 	reels : [     // array of reel objects
 		{ 
-			"frames": 30, 		// number of frames in this reel
-			"width":2560, 		// pixel width of this reel
-			"path":"reel.1.jpg" // path to reel
+			frames: 30, 	    // number of frames in this reel
+			width:2560, 	    // pixel width of this reel
+			path:"reel.1.jpg"   // path to reel
 		},
 		{ 
-			"frames": 30, 		// number of frames in this reel
-			"width": 2560, 		// pixel width of this reel
-			"path":"reel.2.jpg" // path to reel
+			frames: 30, 	    // number of frames in this reel
+			width: 2560, 	    // pixel width of this reel
+			path:"reel.2.jpg"   // path to reel
 		},
 		{ 
-			"frames": 30, 		// number of frames in this reel
-			"width":2560, 		// pixel width of this reel
-			"path":"reel.3.jpg" // path to reel
+			frames: 30, 	    // number of frames in this reel
+			width:2560, 	    // pixel width of this reel
+			path:"reel.3.jpg"   // path to reel
 		}	
     ]
 };
+```
 
+Once you have the JSON, all you need to do is:
+```javascript
 // select film container
 var div = document.getElementById('film-container');
 

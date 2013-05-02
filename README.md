@@ -96,17 +96,17 @@ It includes:
   * included SRT parser/converter, but you can use your own!
 
 ####Adding KeyFrames
-Keyframes can easily be added using: ```film.addKeyFrame( frame, comment, playback )```
+Keyframes can easily be added using: ```film.addKeyFrame( frame, track, comment, callback )```
 
 Example:
 
 ```Javascript
 // adds a keyframe at frame 85, and saves the comment.
-film.addKeyFrame( 85, 'Remember to edit this out'); 
+film.addKeyFrame( 85, 'todo', 'Remember to edit this out'); 
 
 
 // you can also add a callback
-film.addKeyFrame( 124, 'Needs a transition', function(){
+film.addKeyFrame( 124, 'todo', 'Needs a transition', function(){
 	// affect my view, send triggers, etc here
 });
 ```

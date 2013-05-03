@@ -1,9 +1,13 @@
+/* For local NodeJS testing
+
 var fs = require('fs');
 var srt = fs.readFileSync('srt.srt', 'utf8');
 
 if( /\r/.test(srt) ) {
 	srt = srt.replace(/\r/g, "");
 }
+
+*/
 
 function parseSrt( file ) {
 

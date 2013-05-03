@@ -1,7 +1,5 @@
-Animite
+Animite v0.3.0
 =======
-
-version 0.3
 
 ###Mission
 Animite comes from the union of two words: _**anim**ated_ and _spr<b>ite</b>_. Animite's goal is to provide a __flexible__, __codec-less__ way to deal with video on the web, with __no HTML5__ or __Flash__, without sacrificing _efficiency_, _flexibility_ and _versatility_.

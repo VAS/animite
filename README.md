@@ -1,6 +1,7 @@
 Animite v0.1
 =======
 
+
 ###Mission
 Animite comes from the union of two words: _**anim**ated_ and _spr<b>ite</b>_. Animite's goal is to provide a __flexible__, __codec-less__ way to deal with video on the web, with __no HTML5__ or __Flash__, without sacrificing _efficiency_, _flexibility_ and _versatility_.
 
@@ -9,6 +10,29 @@ It boasts fast, high precision seeking, natively variable (even on the fly) play
 Typical CPU usage is about 60% lower when using Animite compared to a Flash video, and has the advantage of not depending on GPU acceleration. It is especially targeted for, and tested on low-end machines.
 
 **IMPORTANT**: _Audio is **currently** not supported_. However, please know it's our #1 priority and are currently working on it. If you have an idea, or would like to contribute, please __FORK__ :)
+
+##Features
+
+###Benefits over traditional video
+- Pure Javascript, CSS & HTML
+- Codec-free
+- Framework independent
+- Keyframes, keyframes, keyframes!
+- _Fast_ and accurate playback/seeking control
+- Flexible playback direction (can play _backwards_ as easily as it plays _forward_)
+- Flexible framerate (can be changed as the video plays) ```film.fps = 30; // BAM!```
+- Completely stylable with CSS (border-radius, inset box-shadow, opacity, etc)
+- Smaller in size than an equivalent AVI or Animated GIF
+- Transparency (alpha/opacity) support!
+- Browser zoom in/out support
+
+###Playback controls
+- Play forwards/backwards
+- Pause
+- Stop
+- Change framerate on-the-go (fps)
+- Change frame increment on-the-go (skipping)
+- Seeking (precise to frame)
 
 ###How it works
 Animite works by rapidly moving a single image containing several frames using the CSS ```background-position``` property of any containing element. This image is traditionally called a sprite sheet. We, avid film fanatics, call it a __reel__. 
@@ -65,28 +89,6 @@ film.seek(36, 0);
 We encourage developers to implement their own player & controls using Animite's very simple API and core functions.
 You can however find an example HTML page where a player, some controls, and subtitle display have been implemented.
 
-##Features
-
-###Benefits over traditional video
-- _Fast_ and powerful playback/seeking control
-- Pure Javascript, CSS & HTML
-- Completely stylable with CSS (border-radius, inset box-shadow, opacity, etc)
-- Codec-free
-- Framework independent
-- Smaller in size than an equivalent AVI or Animated GIF)
-- Multiple sprite-sheet support
-- Transparency (alpha/opacity) support!
-- Flexible playback direction (can play _backwards_ as easily as it plays _forward_)
-- Flexible framerate (can be changed as the video plays) ```film.fps = 30; // BAM!```
-- Clip-wide seeking
-
-###Playback controls
-- Play forwards/backwards
-- Pause
-- Stop
-- Change framerate on-the-go (fps)
-- Change frame increment on-the-go (skipping)
-- Seeking (precise to frame)
 
 ###Keyframes
 One of Animite's great advantages is keyframe support. With keyframes you can do anything, from adding subtitle cues, to affecting a page or the video itself in any way!

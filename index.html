@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Animite by VAS</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Animite</h1>
+        <h2>Flexible web video without Flash or HTML5</h2>
+        <a href="https://github.com/VAS/animite" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>Animite v0.1</h1>
+
+<h3>Mission</h3>
+
+<p>Animite comes from the union of two words: <em><strong>anim</strong>ated</em> and <em>spr<b>ite</b></em>. Animite's goal is to provide a <strong>flexible</strong>, <strong>codec-less</strong> way to deal with video on the web, with <strong>no HTML5</strong> or <strong>Flash</strong>, without sacrificing <em>efficiency</em>, <em>flexibility</em> and <em>versatility</em>.</p>
+
+<p>It boasts fast, high precision seeking, natively variable (even on the fly) playback direction, speed and framerate. Please check out the demo for more information (coming soon). </p>
+
+<p>Typical CPU usage is about 60% lower when using Animite compared to a Flash video, and has the advantage of not depending on GPU acceleration. It is especially targeted for, and tested on low-end machines.</p>
+
+<p><strong>IMPORTANT</strong>: <em>Audio is <strong>currently</strong> not supported</em>. However, please know it's our #1 priority and are currently working on it. If you have an idea, or would like to contribute, please <strong>FORK</strong> :)</p>
+
+<h2>Features</h2>
+
+<h3>Benefits over traditional video</h3>
+
+<ul>
+<li>Pure Javascript, CSS &amp; HTML</li>
+<li>Codec-free</li>
+<li>Framework independent</li>
+<li>Keyframes, keyframes, keyframes!</li>
+<li>
+<em>Fast</em> and accurate playback/seeking control</li>
+<li>Flexible playback direction (can play <em>backwards</em> as easily as it plays <em>forward</em>)</li>
+<li>Flexible framerate (can be changed as the video plays) <code>film.fps = 30; // BAM!</code>
+</li>
+<li>Completely stylable with CSS (border-radius, inset box-shadow, opacity, etc)</li>
+<li>Smaller in size than an equivalent AVI or Animated GIF</li>
+<li>Transparency (alpha/opacity) support!</li>
+<li>Browser zoom in/out support</li>
+</ul><h3>Playback controls</h3>
+
+<ul>
+<li>Play forwards/backwards</li>
+<li>Pause</li>
+<li>Stop</li>
+<li>Change framerate on-the-go (fps)</li>
+<li>Change frame increment on-the-go (skipping)</li>
+<li>Seeking (precise to frame)</li>
+</ul><h3>How it works</h3>
+
+<p>Animite works by rapidly moving a single image containing several frames using the CSS <code>background-position</code> property of any containing element. This image is traditionally called a sprite sheet. We, avid film fanatics, call it a <strong>reel</strong>. </p>
+
+<p>For short clips, typically in-game sprite animations, one reel is more than enough to contain all the necessary frames, and standard animated sprite frameworks stop here on this assumption. But we want more.</p>
+
+<p>For longer clips, fitting all frames in one image would require too much memory.
+We therefore distribute frames across several <strong>reels</strong>, supporting preloading and at the same time optimizing browser memory consumption.  Several reels also offer flexible video buffering and efficient jpeg/png compression across several frames.</p>
+
+<h3>When should I use it?</h3>
+
+<p>Animite is perfect if you want to include videos/clips/sprites on a page, you don't need audio, and you don't feel the HTML+FLASH overhead is justified, and you would like complete control.</p>
+
+<h2>Usage</h2>
+
+<h3>Initialization</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">film</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animite</span><span class="p">(</span><span class="nx">div</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+</pre></div>
+
+<ul>
+<li>
+<code>div</code> is the HTML element that Animite will use to display <code>film</code>. The only requirement is that the element must be able to contain a background.</li>
+<li>
+<code>data</code> is a JSON containing general information. Please read the <strong>How to convert a video for Animite</strong> section to understand what is required.</li>
+</ul><h3>Playback</h3>
+
+<div class="highlight"><pre><span class="nx">film</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>   <span class="c1">// can receive a callback as parameter</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>   <span class="c1">// can receive a callback as parameter</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>  <span class="c1">// can receive a callback as parameter</span>
+
+<span class="nx">film</span><span class="p">.</span><span class="nx">now</span><span class="p">;</span>      <span class="c1">// returns the current seek position</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">now</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// will seek the video to 20% of the total play-time</span>
+</pre></div>
+
+<h3>Seek</h3>
+
+<p>The <strong>seek</strong> function is the underlying core of Animite. <code>film.play</code>, <code>film.pause</code>, <code>film.stop</code> and <code>film.now</code> are all built on top of <code>film.seek</code>.</p>
+
+<p>It takes 2 parameters: <code>film.seek(frame, step)</code>.</p>
+
+<ul>
+<li>
+<code>frame</code> = which frame to show</li>
+<li>
+<code>step</code>  = next increment</li>
+</ul><div class="highlight"><pre><span class="nx">film</span><span class="p">.</span><span class="nx">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="c1">// The above will start the animation from</span>
+<span class="c1">// frame 0, and progress by 1 frame</span>
+<span class="c1">// at the specified framerate (fps).</span>
+
+<span class="nx">film</span><span class="p">.</span><span class="nx">seek</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// The above will start the animation from</span>
+<span class="c1">// frame 20, and go in reverse by 1 frame</span>
+<span class="c1">// at the specified framerate (fps).</span>
+
+<span class="nx">film</span><span class="p">.</span><span class="nx">seek</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="c1">// The above will seek to frame 36 and pause</span>
+</pre></div>
+
+<p>We encourage developers to implement their own player &amp; controls using Animite's very simple API and core functions.
+You can however find an example HTML page where a player, some controls, and subtitle display have been implemented.</p>
+
+<h3>Keyframes</h3>
+
+<p>One of Animite's great advantages is keyframe support. With keyframes you can do anything, from adding subtitle cues, to affecting a page or the video itself in any way!</p>
+
+<p>It includes:</p>
+
+<ul>
+<li>Multiple keyframe <strong>channels</strong> support</li>
+<li>Makes it simple to link to any external script</li>
+<li>
+<strong>Subtitle support</strong>
+
+<ul>
+<li>included .SRT (SubRip) parser/converter (check utils), but you can use your own!</li>
+</ul>
+</li>
+</ul><h4>Adding KeyFrames</h4>
+
+<p>Keyframes can easily be added using: <code>film.addKeyFrame(frame, track, comment, callback)</code></p>
+
+<p><code>addKeyFrame</code> takes 4 parameters:</p>
+
+<ul>
+<li>
+<code>frame</code> : frame number (int)</li>
+<li>
+<code>track</code> : keyframe channel (organize your keyframes in categories)</li>
+<li>
+<code>comment</code> : general text or comment to store relative to this keyframe</li>
+<li>
+<code>callback</code> : add a function to be called <strong>when keyframe is played</strong>.</li>
+</ul><p>Example:</p>
+
+<div class="highlight"><pre><span class="c1">// adds a keyframe at frame 85, and saves the comment.</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">addKeyFrame</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="s1">'todo'</span><span class="p">,</span> <span class="s1">'Remember to edit this out'</span><span class="p">);</span> 
+
+
+<span class="c1">// you can also add a callback</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">addKeyFrame</span><span class="p">(</span><span class="mi">124</span><span class="p">,</span> <span class="s1">'todo'</span><span class="p">,</span> <span class="s1">'Needs a transition'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="c1">// affect my view, send triggers, etc here</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>We could also define a custom <code>addKeyFrame</code> function on our page:</p>
+
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">addKeyFrame</span><span class="p">(</span><span class="nx">frame</span><span class="p">,</span> <span class="nx">track</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">film</span><span class="p">.</span><span class="nx">addKeyFrame</span><span class="p">(</span><span class="nx">frame</span><span class="p">,</span> <span class="nx">track</span><span class="p">,</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+    <span class="c1">// affect the view here</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>If we had a seek bar for example, we could visually add an element to show where the added keyframes are located! You can see this in action in the demo.</p>
+
+<h3>Preloading</h3>
+
+<p>Animite offers accurate preloading states</p>
+
+<div class="highlight"><pre><span class="nx">film</span><span class="p">.</span><span class="nx">preloaded</span><span class="p">.</span><span class="nx">reels</span><span class="p">;</span> <span class="c1">// returns an array of _currently_ preloaded reels</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">preloaded</span><span class="p">.</span><span class="nx">frames</span><span class="p">;</span> <span class="c1">// returns the number of loaded frames (number)</span>
+<span class="nx">film</span><span class="p">.</span><span class="nx">preloaded</span><span class="p">.</span><span class="nx">percent</span><span class="p">;</span> <span class="c1">// returns current preloaded percent from 0 to 100</span>
+</pre></div>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="c1">// Please don't use this...but you get the idea</span>
+<span class="k">while</span><span class="p">(</span><span class="nx">film</span><span class="p">.</span><span class="nx">preloaded</span><span class="p">.</span><span class="nx">percent</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// manage your preloading view states here</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>Conversion functions</h3>
+
+<h4>Time &lt; &gt; Frame</h4>
+
+<div class="highlight"><pre><span class="nx">film</span><span class="p">.</span><span class="nx">timeToFrame</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// e.g. 2400 at 24 fps</span>
+<span class="c1">// returns the frame # where the 100th second of playback occurs</span>
+
+<span class="nx">film</span><span class="p">.</span><span class="nx">frameToTime</span><span class="p">(</span><span class="mi">2400</span><span class="p">);</span>  <span class="c1">// e.g. 100 (seconds) at 24 fps</span>
+<span class="c1">// returns amount of elapsed seconds from frame 0 and 24th frame (at current frame-rate)</span>
+</pre></div>
+
+<h4>Frame &lt; &gt; Position</h4>
+
+<div class="highlight"><pre><span class="nx">film</span><span class="p">.</span><span class="nx">frameToPos</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// e.g. 50 (%) [if total frame count is 200]</span>
+<span class="c1">// returns the current position</span>
+
+<span class="nx">film</span><span class="p">.</span><span class="nx">posToFrame</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>  <span class="c1">// e.g. 100 (seconds) [if total frame count is 200]</span>
+<span class="c1">// returns the frame closest to exactly 50% of playback</span>
+</pre></div>
+
+<h2>How to convert a video for Animite</h2>
+
+<p>Animite needs <strong>reels</strong> to work. A reel is nothing more than one large image containing all of the single frames of a video clip. You can split long clips into several reels. It is up to you to find the optimal reel/frame ratio based on your bandwidth requirements / memory consumption.</p>
+
+<p>A part from the fancy name, reels are nothing more than a JPEG or PNG image. For best compression, remember to use</p>
+
+<ul>
+<li>
+<code>JPEG</code> for <em>photo</em>-like images</li>
+<li>
+<code>PNG</code> for <em>vector</em>-like images, or if <em>transparency is <strong>required</strong></em>.</li>
+<li>Animite supports frames on multiple lines within a reel, so try to make the image as square as possible (avoid excessively wide or tall reels.) This will reduce overall memory consumption.</li>
+</ul><h3>Any-2-Reel, the Reel generator.</h3>
+
+<p>We have implemented our own Reel generator (a simple PHP script), and it should work on any system with a command-line, PHP, <a href="http://www.ffmpeg.org">FFMPEG</a> and ImageMagick <a href="http://www.imagemagick.org/script/montage.php">Montage</a>.</p>
+
+<p>Please note that <strong>Animite also requires a JSON file</strong> to understand your reel structure. While our <code>any2reel</code> script automatically generates one, should you implement your own reel generator, you will need to either write the JSON manually or automatically.</p>
+
+<p>The generalized JSON format for Animite is the following: </p>
+
+<div class="highlight"><pre>
+<span class="p">{</span>
+    <span class="nx">width</span> <span class="o">:</span> <span class="nx">VIDEO_WIDTH</span><span class="p">,</span>   <span class="c1">// number (int)</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="nx">VIDEO_HEIGHT</span><span class="p">,</span>  <span class="c1">// number (int)</span>
+    <span class="nx">fps</span> <span class="o">:</span> <span class="nx">VIDEO_FRAMERATE</span><span class="p">,</span> <span class="c1">// number (float) frames-per-second</span>
+    <span class="nx">reels</span> <span class="o">:</span> <span class="p">[</span>              <span class="c1">// array of reel objects</span>
+        <span class="p">{</span>
+            <span class="nx">frames</span> <span class="o">:</span> <span class="nx">NUMBER_OF_FRAMES_IN_REEL</span><span class="p">,</span> <span class="c1">// number (int)</span>
+            <span class="nx">width</span> <span class="o">:</span> <span class="nx">PIXEL_WIDTH_OF_REEL</span><span class="p">,</span>       <span class="c1">// number (int)</span>
+            <span class="nx">path</span> <span class="o">:</span> <span class="nx">PATH_TO_REEL</span>                <span class="c1">// string</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+</pre></div>
+
+<p>You will notice that each reel requires <code>frames</code>, <code>width</code>, and <code>path</code>.</p>
+
+<ul>
+<li>
+<code>frames</code> is the number of frames contained in that particular reel.</li>
+<li>
+<code>width</code> is width of the reel (in pixels), so that Animite knows when to go to the next line of frames</li>
+<li>
+<code>path</code> is a simple path to the image. If you have <code>reel.jpg</code> in a <code>reels/</code> directory, all you need to do is write: <code>"reels/reel.jpg"</code> for example. Think of it as a <code>src</code> tag (we might consider renaming it).</li>
+</ul><p>A typical JSON: </p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="mi">640</span><span class="p">,</span>   <span class="c1">// px</span>
+    <span class="nx">height</span><span class="o">:</span> <span class="mi">360</span><span class="p">,</span>  <span class="c1">// px</span>
+    <span class="nx">fps</span> <span class="o">:</span> <span class="mf">23.976</span><span class="p">,</span> <span class="c1">// 23.976 is the standard for US film</span>
+    <span class="nx">reels</span> <span class="o">:</span> <span class="p">[</span>     <span class="c1">// array of reel objects</span>
+        <span class="p">{</span> 
+            <span class="nx">frames</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>         <span class="c1">// number of frames in this reel</span>
+            <span class="nx">width</span><span class="o">:</span><span class="mi">2560</span><span class="p">,</span>         <span class="c1">// pixel width of this reel</span>
+            <span class="nx">path</span><span class="o">:</span><span class="s2">"reel.1.jpg"</span>   <span class="c1">// path to reel</span>
+        <span class="p">},</span>
+        <span class="p">{</span> 
+            <span class="nx">frames</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>         <span class="c1">// number of frames in this reel</span>
+            <span class="nx">width</span><span class="o">:</span> <span class="mi">2560</span><span class="p">,</span>        <span class="c1">// pixel width of this reel</span>
+            <span class="nx">path</span><span class="o">:</span><span class="s2">"reel.2.jpg"</span>   <span class="c1">// path to reel</span>
+        <span class="p">},</span>
+        <span class="p">{</span> 
+            <span class="nx">frames</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>         <span class="c1">// number of frames in this reel</span>
+            <span class="nx">width</span><span class="o">:</span><span class="mi">2560</span><span class="p">,</span>         <span class="c1">// pixel width of this reel</span>
+            <span class="nx">path</span><span class="o">:</span><span class="s2">"reel.3.jpg"</span>   <span class="c1">// path to reel</span>
+        <span class="p">}</span>   
+    <span class="p">]</span>
+<span class="p">};</span>
+</pre></div>
+
+<p>Once you have the JSON, all you need to do is:</p>
+
+<div class="highlight"><pre><span class="c1">// select film container</span>
+<span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'film-container'</span><span class="p">);</span>
+
+<span class="c1">// initialize film</span>
+<span class="kd">var</span> <span class="nx">film</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animite</span><span class="p">(</span><span class="nx">div</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+
+<span class="nx">film</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span> <span class="c1">// easy as that.</span>
+</pre></div>
+
+<h2>Docs</h2>
+
+<h3>Playback</h3>
+
+<p><code>film.play(callback)</code> </p>
+
+<p><code>film.pause(callback)</code> </p>
+
+<p><code>film.stop(callback)</code> </p>
+
+<p><code>film.seek(frame, step)</code> </p>
+
+<p><code>film.now</code> </p>
+
+<h3>Framerate</h3>
+
+<p><code>film.fps</code> </p>
+
+<h3>Preloading</h3>
+
+<p><code>film.preloaded</code> </p>
+
+<p><code>film.preloaded.reels</code> </p>
+
+<p><code>film.preloaded.frames</code> </p>
+
+<p><code>film.preloaded.percent</code> </p>
+
+<h3>Keyframes</h3>
+
+<p><code>film.addKeyFrame(frame, track, comment, callback)</code> </p>
+
+<h3>Utility functions</h3>
+
+<p><code>film.timeToFrame(seconds)</code> </p>
+
+<p><code>film.frameToTime(frame)</code> </p>
+
+<p><code>film.frameToPos(frame)</code> </p>
+
+<p><code>film.posToFrame(position)</code> </p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/VAS/animite/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/VAS/animite/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/VAS/animite"></a> is maintained by <a href="https://github.com/VAS">VAS</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

@@ -79,7 +79,7 @@ var Animite = function(element, film) {
     Object.defineProperty( self, 'now', {
         get : function() { return self.currentFrame / self.totalFrames * 100 },
         set : function( value ) {
-            self.seek( (value*self.totalFrames+0.5) / 100 | 0, self.currentStep || 0 );
+            self.seek( ((value*self.totalFrames+0.5) / 100) | 0, self.currentStep || 0 );
         }
     });
 

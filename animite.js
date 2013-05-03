@@ -160,7 +160,7 @@ var Animite = function(element, film) {
 
         // if a next step is specified, seek() with that step
         if ( step ) {
-            timeout = setTimeout(function() { self.seek(frame+step, step); }, 1000/self.fps|0);
+            timeout = setTimeout(function() { self.seek(frame+step, step); }, (1000/self.fps)|0);
         }
     }; 
 

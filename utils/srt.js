@@ -1,3 +1,13 @@
+/**  
+ *  Copyright Andrea Muttoni
+ *            www.vas.it
+ *  
+ *  MIT Licensed
+ *
+ *
+ *  contact: andrea@vas.it
+ */
+
 var SRT = function( file ){
 	var self = this;
 	if(file) {

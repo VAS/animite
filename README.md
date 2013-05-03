@@ -154,7 +154,7 @@ film.timeToFrame(100); // e.g. 2400 at 24 fps
 // returns the frame # where the 100th second of playback occurs
 
 film.frameToTime(2400);  // e.g. 100 (seconds) at 24 fps
-// returns amount of elapsed seconds from frame 0 and 24th frame (at current frame-rate)
+// returns amount of elapsed seconds from frame 0 and 2400th frame (at current frame-rate)
 ```
 
 ####Frame < > Position

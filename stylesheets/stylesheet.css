@@ -23,6 +23,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+em, i {
+  font-style: italic;
+}
+
 b, strong {
   font-weight: 700;
 }

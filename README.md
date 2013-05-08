@@ -24,6 +24,7 @@ Typical CPU usage is about 60% lower when using Animite compared to a Flash vide
 - Smaller in size than an equivalent AVI or Animated GIF
 - Transparency (alpha/opacity) support!
 - Browser zoom in/out support
+- Gif-like default loopability
 
 ###Playback controls
 - Play forwards/backwards

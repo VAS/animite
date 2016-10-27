@@ -139,7 +139,7 @@ var Animite = function(element, film) {
         element.style.backgroundPosition = '-'+x+'px -'+y+'px';
 
         // debug
-        //element.innerText = self.currentFrame;
+        // element.innerText = self.currentFrame;
 
         // if there is a callback associated with onEnterFrame, execute it.
         if ( self.onEnterFrame && typeof self.onEnterFrame === 'function' ) {
